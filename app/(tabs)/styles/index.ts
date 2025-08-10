@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 
+
 export const styles = StyleSheet.create({
   scroll: {
     flex: 1,
@@ -74,7 +75,7 @@ export const styles = StyleSheet.create({
   },
   sectionSubtitle: {
     fontSize: 14,
-    color: '#7BB86F',
+    color: '#000000',
     marginBottom: 15,
   },
   cajasList: {
@@ -93,27 +94,28 @@ export const styles = StyleSheet.create({
     shadowRadius: 8,
   },
   cajaImageContainer: {
-    height: 140,
-    backgroundColor: '#F1F8E9',
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'relative',
+    width: '100%',          // Ocupa todo el ancho disponible
+    height: 160,            // Altura fija para mantener relación rectangular
+    position: 'relative',   // Necesario para posicionamiento absoluto del hijo
+    overflow: 'hidden',     // Para que nada se salga del contenedor
+    backgroundColor: '#F1F8E9', // Color de fondo por si la imagen no carga
   },
   cajaImage: {
-    width: 120,
-    height: 120,
+    width: '100%',         // Ocupa todo el ancho del contenedor
+    height: '100%',        // Ocupa toda la altura del contenedor
+    resizeMode: 'cover',   // Cubre el espacio manteniendo proporciones
   },
   cajaRating: {
-    position: 'absolute',
-    top: 10,
-    right: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'rgba(255,255,255,0.9)',
-    borderRadius: 12,
-    paddingVertical: 3,
-    paddingHorizontal: 8,
-    gap: 3,
+    position: 'absolute',  // Posicionamiento absoluto respecto al contenedor padre
+    top: 10,               // 10px desde el borde superior
+    right: 10,             // 10px desde el borde derecho
+    flexDirection: 'row',  // Icono y texto en fila
+    alignItems: 'center',  // Centrado vertical
+    backgroundColor: 'rgba(255, 255, 255, 0.9)', // Fondo blanco semitransparente
+    borderRadius: 12,      // Bordes redondeados
+    paddingVertical: 3,    // Espaciado vertical
+    paddingHorizontal: 8,  // Espaciado horizontal
+    gap: 3,                // Espacio entre icono y texto
   },
   cajaRatingText: {
     fontSize: 12,

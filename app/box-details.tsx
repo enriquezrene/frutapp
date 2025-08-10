@@ -10,8 +10,7 @@ export default function BoxDetails() {
   return (
     <View style={{ flex: 1, padding: 16 }}>
       <BoxItem 
-        box={boxData} 
-        showDetails={true}
+        box={boxData}
       />
     </View>
   );

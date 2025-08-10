@@ -12,16 +12,16 @@ export const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
   },
   imageContainer: {
-    height: 160,
-    backgroundColor: '#F1F8E9',
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'relative',
+    width: '100%',          // Ocupa todo el ancho disponible
+    height: 160,            // Altura fija para mantener relación rectangular
+    position: 'relative',   // Necesario para posicionamiento absoluto del hijo
+    overflow: 'hidden',     // Para que nada se salga del contenedor
+    backgroundColor: '#F1F8E9'
   },
   image: {
-    width: 120,
-    height: 120,
-    resizeMode: 'contain',
+   width: '100%',         // Ocupa todo el ancho del contenedor
+    height: '100%',        // Ocupa toda la altura del contenedor
+    resizeMode: 'cover',   
   },
   rating: {
     position: 'absolute',

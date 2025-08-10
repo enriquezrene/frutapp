@@ -1,3 +1,5 @@
+//const API_URL = 'http://localhost:3000/api';
+const API_URL = 'https://frut-api.netlify.app/api';
 export interface ProductoEnCaja {
   id: number;
   cantidad: string;
@@ -21,7 +23,7 @@ export interface Caja {
 
 export const fetchCajas = async (): Promise<Caja[]> => {
   try {
-    const response = await fetch('http://localhost:3001/api/cajas');
+    const response = await fetch(`${API_URL}/cajas`);
     const data = await response.json();
     return data.items || [];
   } catch (error) {
