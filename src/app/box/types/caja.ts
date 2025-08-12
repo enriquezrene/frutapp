@@ -8,7 +8,7 @@ export type Producto = {
 };
 
 export type Caja = {
-  id?: number;
+  id: number;
   nombre: string;
   descripcion: string;
   precio: number;

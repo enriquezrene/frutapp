@@ -1,6 +1,48 @@
-import { StyleSheet } from "react-native";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { Link } from "expo-router";
+import React from "react";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Caja } from "../types/caja";
 
-export const styles = StyleSheet.create({
+interface CajaItemProps {
+  caja: Caja;
+}
+
+export const CajaItem: React.FC<CajaItemProps> = ({ caja: box }) => {
+  return (
+    <Link href={`/box-details/${box.id}`} asChild>
+      <TouchableOpacity style={styles.container}>
+        <View style={styles.imageContainer}>
+          <Image source={{ uri: box.imagen }} style={styles.image} />
+          <View style={styles.rating}>
+            <MaterialIcons name="star" size={14} color="#FFD700" />
+            <Text style={styles.ratingText}>{box.rating}</Text>
+          </View>
+        </View>
+
+        <View style={styles.content}>
+          <Text style={styles.title}>{box.nombre}</Text>
+          <Text style={styles.description}>{box.descripcion}</Text>
+
+          <View style={styles.products}>
+            {box.productos.map((prod, idx) => (
+              <Text key={idx} style={styles.product}>
+                • {prod.nombre}{" "}
+                <Text style={styles.quantity}>({prod.cantidad})</Text>
+              </Text>
+            ))}
+          </View>
+
+          <View style={styles.footer}>
+            <Text style={styles.price}>${box.precio.toFixed(2)}</Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+    </Link>
+  );
+};
+
+const styles = StyleSheet.create({
   container: {
     backgroundColor: "#FFF",
     borderRadius: 12,
@@ -97,12 +139,3 @@ export const styles = StyleSheet.create({
     marginLeft: 4,
   },
 });
-
-// Estilos dinámicos (si los necesitas)
-export const dynamicStyles = {
-  productImage: (size: number) => ({
-    width: size,
-    height: size,
-    borderRadius: size / 2,
-  }),
-};

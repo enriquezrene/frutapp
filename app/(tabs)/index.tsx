@@ -1,9 +1,9 @@
+import { useCajas } from '@/src/app/box/hooks/use-cajas';
+import { Producto } from '@/src/app/box/types/caja';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { Link } from 'expo-router';
 import { ActivityIndicator, FlatList, Image, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useCajas } from '@/src/app/box/hooks/use-cajas';
-import { Producto } from '@/src/app/box/types/caja';
 
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
@@ -60,17 +60,12 @@ export default function HomeScreen() {
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.cajasList}
             renderItem={({ item }) => {
-              console.log('Caja item:', item.imagen);
-              return <Link href={{
-                pathname: "/box-details",
-                params: {
-                  box: JSON.stringify(item)
-                }
-              }} asChild>
+              return <Link href={`/box-details/${item.id}`
+              } asChild>
                 <TouchableOpacity style={styles.cajaCard}>
                   {/* Imagen y rating */}
                   <View style={styles.cajaImageContainer}>
-                    <Image source={{ uri: 'https://enriquezrene.github.io/frut-api/images/cajas/energia-matutina.jpg' }} style={styles.cajaImage} />
+                    <Image source={{ uri: item.imagen }} style={styles.cajaImage} />
                     <View style={styles.cajaRating}>
                       <MaterialIcons name="star" size={14} color="#FFD700" />
                       <Text style={styles.cajaRatingText}>{item.rating}</Text>
